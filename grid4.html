@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRID (alineación)</title>
+    <style type="text/css"> 
+        body, html {
+            margin: 0;
+        }
+        img {
+            width: 100px;
+        }
+        .contenido {
+            display: grid;
+            border: 1px solid red;
+            height: 800px;
+            grid-template-columns: repeat(3, 200px);
+            grid-template-rows: repeat(3, 200px);
+            justify-items: center;
+            align-items: center;
+            justify-content: space-evenly;
+            align-content: space-evenly;
+        }
+        .objeto {
+            border: 1px dotted green;
+        }
+    </style>
+</head>
+<body>
+    <section class="contenido">
+        <div class="objeto">
+            <img src="img/3_macarrones.png">
+        </div>
+        <div class="objeto">
+            <img src="img/chupachups.png">
+        </div>
+        <div class="objeto">
+            <img src="img/maquineta.png">
+        </div>
+        <div class="objeto">
+            <img src="img/mechero.png">
+        </div>
+        <div class="objeto">
+            <img src="img/peine.png">
+        </div>
+        <div class="objeto">
+            <img src="img/llavero.png">
+        </div>
+        <div class="objeto">
+            <img src="img/marco_foto.png">
+        </div>
+        <div class="objeto">
+            <img src="img/gorra.png">
+        </div>
+    </section>
+
+    <label for="alignHorizontal">Alineación horizontal:</label>
+    <select id="alignHorizontal">
+        <option value="center">Centro</option>
+        <option value="start">Inicio</option>
+        <option value="end">Final</option>
+        <option value="stretch">Estirar</option>
+        <option value="flex-start">Flex Inicio</option>
+        <option value="flex-end">Flex Final</option>
+    </select>
+
+    <label for="alignVertical">Alineación vertical:</label>
+    <select id="alignVertical">
+        <option value="center">Centro</option>
+        <option value="start">Inicio</option>
+        <option value="end">Final</option>
+        <option value="stretch">Estirar</option>
+        <option value="baseline">Línea base</option>
+        <option value="flex-start">Flex Inicio</option>
+        <option value="flex-end">Flex Final</option>
+    </select>
+
+    <label for="justifyContent">Distribución horizontal:</label>
+    <select id="justifyContent">
+        <option value="space-evenly">Espaciado uniforme</option>
+        <option value="start">Inicio</option>
+        <option value="end">Final</option>
+        <option value="center">Centro</option>
+        <option value="space-between">Espaciado entre</option>
+        <option value="space-around">Espaciado alrededor</option>
+    </select>
+
+    <label for="alignContent">Distribución vertical:</label>
+    <select id="alignContent">
+        <option value="space-evenly">Espaciado uniforme</option>
+        <option value="start">Inicio</option>
+        <option value="end">Final</option>
+        <option value="center">Centro</option>
+        <option value="space-between">Espaciado entre</option>
+        <option value="space-around">Espaciado alrededor</option>
+    </select>
+
+    <button onclick="applyChanges()">Aplicar</button>
+
+    <script type="text/javascript">
+        function applyChanges() {
+            const alignHorizontal = document.getElementById("alignHorizontal").value;
+            const alignVertical = document.getElementById("alignVertical").value;
+            const justifyContent = document.getElementById("justifyContent").value;
+            const alignContent = document.getElementById("alignContent").value;
+
+            const contenido = document.querySelector(".contenido");
+            contenido.style.justifyItems = alignHorizontal;
+            contenido.style.alignItems = alignVertical;
+            contenido.style.justifyContent = justifyContent;
+            contenido.style.alignContent = alignContent;
+        }
+    </script>
+</body>
+</html>

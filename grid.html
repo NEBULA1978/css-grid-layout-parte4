@@ -11,17 +11,32 @@
 	img{
 		width:100px;
 	}
-	.contenido{
-		display:grid;
-		border:1px solid red;
-		height:800px;
-		grid-template-columns:repeat(3,200px);
-		grid-template-rows:repeat(3,200px);
-		justify-items:center;
-		align-items:center;
-		justify-content:space-evenly;
-		align-content:space-evenly;
-	}
+.contenido {
+    display: grid; /* Utiliza un layout de cuadrícula */
+
+    border: 1px solid red; /* Borde rojo alrededor de la cuadrícula */
+
+    height: 800px; /* Altura de la cuadrícula */
+
+    grid-template-columns: repeat(3, 200px); /* 3 columnas de 200px cada una */
+    /* Se puede variar la anchura de las columnas: ej. 'grid-template-columns: 100px 50% auto;' */
+
+    grid-template-rows: repeat(3, 200px); /* 3 filas de 200px cada una */
+    /* Se puede variar la altura de las filas: ej. 'grid-template-rows: 100px 2fr 1fr;' */
+
+    justify-items: center; /* Alinea los elementos horizontalmente al centro */
+    /* Otras opciones: start, end, stretch, flex-start, flex-end */
+
+    align-items: center; /* Alinea los elementos verticalmente al centro */
+    /* Otras opciones: start, end, stretch, baseline, flex-start, flex-end */
+
+    justify-content: space-evenly; /* Distribuye el espacio entre las columnas de manera uniforme */
+    /* Otras opciones: start, end, center, space-between, space-around, space-evenly */
+
+    align-content: space-evenly; /* Distribuye el espacio entre las filas de manera uniforme */
+    /* Otras opciones: start, end, center, space-between, space-around, space-evenly */
+}
+
 	.objeto{
 		border:1px dotted green;
 	}

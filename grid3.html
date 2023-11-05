@@ -13,17 +13,32 @@
             width: 100px; /* Establece el ancho de todas las imágenes a 100px */
         }
         /* Estilos de la cuadrícula */
-        .contenido {
-            display: grid; /* Utiliza un layout de cuadrícula */
-            border: 1px solid red; /* Borde rojo alrededor de la cuadrícula */
-            height: 800px; /* Altura de la cuadrícula */
-            grid-template-columns: repeat(3, 200px); /* 3 columnas de 200px cada una */
-            grid-template-rows: repeat(3, 200px); /* 3 filas de 200px cada una */
-            justify-items: center; /* Alinea los elementos horizontalmente al centro */
-            align-items: center; /* Alinea los elementos verticalmente al centro */
-            justify-content: space-evenly; /* Distribuye el espacio entre las columnas de manera uniforme */
-            align-content: space-evenly; /* Distribuye el espacio entre las filas de manera uniforme */
-        }
+.contenido {
+    display: grid; /* Utiliza un layout de cuadrícula */
+
+    border: 1px solid red; /* Borde rojo alrededor de la cuadrícula */
+
+    height: 800px; /* Altura de la cuadrícula */
+
+    grid-template-columns: repeat(3, 200px); /* 3 columnas de 200px cada una */
+    /* Se puede variar la anchura de las columnas: ej. 'grid-template-columns: 100px 50% auto;' */
+
+    grid-template-rows: repeat(3, 200px); /* 3 filas de 200px cada una */
+    /* Se puede variar la altura de las filas: ej. 'grid-template-rows: 100px 2fr 1fr;' */
+
+    justify-items: center; /* Alinea los elementos horizontalmente al centro */
+    /* Otras opciones: start, end, stretch, flex-start, flex-end */
+
+    align-items: center; /* Alinea los elementos verticalmente al centro */
+    /* Otras opciones: start, end, stretch, baseline, flex-start, flex-end */
+
+    justify-content: space-evenly; /* Distribuye el espacio entre las columnas de manera uniforme */
+    /* Otras opciones: start, end, center, space-between, space-around, space-evenly */
+
+    align-content: space-evenly; /* Distribuye el espacio entre las filas de manera uniforme */
+    /* Otras opciones: start, end, center, space-between, space-around, space-evenly */
+}
+
         /* Estilos de los objetos dentro de la cuadrícula */
         .objeto {
             border: 1px dotted green; /* Borde punteado verde alrededor de cada objeto */
