@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRID (alineación)</title>
+    <style type="text/css">
+        /* Estilos generales */
+        body,html{
+            margin:0;            
+        }
+        img{
+            width:100px; /* Establece el ancho de todas las imágenes a 100px */
+        }
+        /* Estilos de la cuadrícula */
+        .contenido{
+            display:grid; /* Utiliza un layout de cuadrícula */
+            border:1px solid red; /* Borde rojo alrededor de la cuadrícula */
+            height:800px; /* Altura de la cuadrícula */
+            grid-template-columns:repeat(3,200px); /* 3 columnas de 200px cada una */
+            grid-template-rows:repeat(3,200px); /* 3 filas de 200px cada una */
+            justify-items:center; /* Alinea los elementos horizontalmente al centro */
+            align-items:center; /* Alinea los elementos verticalmente al centro */
+            justify-content:space-evenly; /* Distribuye el espacio entre las columnas de manera uniforme */
+            align-content:space-evenly; /* Distribuye el espacio entre las filas de manera uniforme */
+        }
+        /* Estilos de los objetos dentro de la cuadrícula */
+        .objeto{
+            border:1px dotted green; /* Borde punteado verde alrededor de cada objeto */
+        }
+    </style>
+</head>
+<body>
+    <section class="contenido">
+        <!-- Objetos dentro de la cuadrícula -->
+        <div class="objeto">
+            <img src="img/3_macarrones.png">
+        </div>
+        <div class="objeto">
+            <img src="img/chupachups.png">
+        </div>
+        <div class="objeto">
+            <img src="img/maquineta.png">
+        </div>
+        <div class="objeto">
+            <img src="img/mechero.png">
+        </div>
+        <div class="objeto">
+            <img src="img/peine.png">
+        </div>
+        <div class="objeto">
+            <img src="img/llavero.png">
+        </div>
+        <div class="objeto">
+            <img src="img/marco_foto.png">
+        </div>
+        <div class="objeto">
+            <img src="img/gorra.png">
+        </div>
+    </section>
+</body>
+</html>

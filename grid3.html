@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRID (alineación)</title>
+    <style type="text/css">
+        /* Estilos generales */
+        body, html {
+            margin: 0;
+        }
+        img {
+            width: 100px; /* Establece el ancho de todas las imágenes a 100px */
+        }
+        /* Estilos de la cuadrícula */
+        .contenido {
+            display: grid; /* Utiliza un layout de cuadrícula */
+            border: 1px solid red; /* Borde rojo alrededor de la cuadrícula */
+            height: 800px; /* Altura de la cuadrícula */
+            grid-template-columns: repeat(3, 200px); /* 3 columnas de 200px cada una */
+            grid-template-rows: repeat(3, 200px); /* 3 filas de 200px cada una */
+            justify-items: center; /* Alinea los elementos horizontalmente al centro */
+            align-items: center; /* Alinea los elementos verticalmente al centro */
+            justify-content: space-evenly; /* Distribuye el espacio entre las columnas de manera uniforme */
+            align-content: space-evenly; /* Distribuye el espacio entre las filas de manera uniforme */
+        }
+        /* Estilos de los objetos dentro de la cuadrícula */
+        .objeto {
+            border: 1px dotted green; /* Borde punteado verde alrededor de cada objeto */
+        }
+    </style>
+</head>
+<body>
+    <label for="altura">Altura de la cuadrícula:</label>
+    <input type="text" id="altura" placeholder="Ej. 800px">
+
+    <label for="columnas">Columnas (ancho):</label>
+    <input type="text" id="columnas" placeholder="Ej. 200px">
+
+    <label for="filas">Filas (alto):</label>
+    <input type="text" id="filas" placeholder="Ej. 200px">
+
+    <label for="numColumnas">Número de columnas:</label>
+    <input type="range" id="numColumnas" min="1" max="6" step="1" value="3">
+
+    <label for="numFilas">Número de filas:</label>
+    <input type="range" id="numFilas" min="1" max="6" step="1" value="3">
+
+    <label>Alinear elementos horizontalmente:</label>
+    <input type="radio" id="horizLeft" name="horizontal" value="start">
+    <label for="horizLeft">Izquierda</label>
+    <input type="radio" id="horizCenter" name="horizontal" value="center" checked>
+    <label for="horizCenter">Centro</label>
+    <input type="radio" id="horizRight" name="horizontal" value="end">
+    <label for="horizRight">Derecha</label>
+
+    <label for="justifyContent">Justificar contenido:</label>
+    <select id="justifyContent">
+        <option value="space-evenly">Espacio uniforme</option>
+        <option value="space-around">Alrededor del espacio</option>
+        <option value="space-between">Entre el espacio</option>
+        <option value="center">Centro</option>
+    </select>
+
+    <label for="alignContent">Alinear contenido:</label>
+    <select id="alignContent">
+        <option value="space-evenly">Espacio uniforme</option>
+        <option value="space-around">Alrededor del espacio</option>
+        <option value="space-between">Entre el espacio</option>
+        <option value="center">Centro</option>
+    </select>
+
+    <section class="contenido">
+        <!-- Objetos dentro de la cuadrícula -->
+        <div class="objeto">
+            <img src="img/3_macarrones.png">
+        </div>
+        <div class="objeto">
+            <img src="img/chupachups.png">
+        </div>
+        <div class="objeto">
+            <img src="img/maquineta.png">
+        </div>
+        <div class="objeto">
+            <img src="img/mechero.png">
+        </div>
+        <div class="objeto">
+            <img src="img/peine.png">
+        </div>
+        <div class="objeto">
+            <img src="img/llavero.png">
+        </div>
+        <div class="objeto">
+            <img src="img/marco_foto.png">
+        </div>
+        <div class="objeto">
+            <img src="img/gorra.png">
+        </div>
+    </section>
+
+    <script>
+        document.getElementById("justifyContent").addEventListener("change", function () {
+            document.querySelector('.contenido').style.justifyContent = this.value;
+        });
+
+        document.getElementById("alignContent").addEventListener("change", function () {
+            document.querySelector('.contenido').style.alignContent = this.value;
+        });
+    </script>
+</body>
+</html>
