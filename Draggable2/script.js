@@ -1,84 +1,93 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const dragObject = document.querySelector("#draggable-object");
-  const dropContainer = document.querySelector("#drop-point");
+// Seleccionar Elementos del DOM
+let title = document.getElementById("title");
+console.log(title.innerText);
 
-  let deviceType = "";
-  let initialX = 0,
-    initialY = 0;
-  let moveElement = false;
+let mainDiv = document.querySelector(".main-div");
+let listItems = document.querySelectorAll("ul.list > li");
 
-  function createNewDraggableObject() {
-    const newDraggableObject = document.createElement("div");
-    newDraggableObject.classList.add("draggable-object");
-    newDraggableObject.style.backgroundColor = "#006eff";
-    newDraggableObject.style.width = "9em";
-    newDraggableObject.style.height = "9em";
-    newDraggableObject.style.borderRadius = "0.5em";
-    newDraggableObject.style.cursor = "move";
-    newDraggableObject.draggable = true;
+// Modificar Elementos del DOM
+// - Cambiar contenido
+title.innerText = "Manipulando el DOM";
+title.innerHTML = "<strong>Nuevo</strong> título";
 
-    dropContainer.appendChild(newDraggableObject);
-    adjustDropPointSize();
-    addDragListeners(newDraggableObject);
-  }
+// - Modificar atributos y clases
+let image = document.querySelector("img");
+image.setAttribute("src", "bun-logo.svg");
+image.classList.add("img-responsive");
+// - Estilos
+mainDiv.style.backgroundColor = "#ffcc00";
 
-  function adjustDropPointSize() {
-    const objectsInDropPoint = document.querySelectorAll("#drop-point .draggable-object");
-    const countObjects = objectsInDropPoint.length;
-    const dropPointWidth = 10 + countObjects * 11; // Change size according to your design
-    const dropPointHeight = 10 + countObjects * 11; // Change size according to your design
+// Crear y Eliminar Elementos del DOM
+// - Crear elementos
+let newDiv = document.createElement("div");
+newDiv.innerText = "Soy un div nuevo";
+document.body.appendChild(newDiv);
 
-    dropContainer.style.width = `${dropPointWidth}em`;
-    dropContainer.style.height = `${dropPointHeight}em`;
-  }
+// - Eliminar elementos
+let oldDiv = document.querySelector(".old-div");
+document.body.removeChild(oldDiv);
 
-  function addDragListeners(draggableObject) {
-    draggableObject.addEventListener("dragstart", dragStart);
-    draggableObject.addEventListener("touchstart", dragStart);
-    draggableObject.addEventListener("touchend", drop);
-    draggableObject.addEventListener("touchmove", touchMove);
-  }
-
-  // Resto del código de detección de dispositivo, dragStart, dragOver, touchMove, etc.
-
-  const drop = (e) => {
-    e.preventDefault();
-
-    if (isTouchDevice()) {
-      moveElement = false;
-      const currentDropBound = dropContainer.getBoundingClientRect();
-      if (
-        initialX >= currentDropBound.left &&
-        initialX <= currentDropBound.right &&
-        initialY >= currentDropBound.top &&
-        initialY <= currentDropBound.bottom
-      ) {
-        dragObject.classList.add("hide");
-        dropContainer.insertAdjacentHTML(
-          "afterbegin",
-          '<div class="draggable-object"></div>'
-        );
-        createNewDraggableObject();
-      }
-    } else {
-      if (e.target.classList.contains("drop-point")) {
-        const newDraggableObject = e.target.querySelector(".draggable-object");
-        if (newDraggableObject) {
-          newDraggableObject.classList.remove("hide");
-          dropContainer.appendChild(newDraggableObject);
-          adjustDropPointSize();
-        }
-        dragObject.setAttribute("draggable", "false");
-        dragObject.classList.add("hide");
-        createNewDraggableObject();
-      }
-    }
-  };
-
-  window.onload = async () => {
-    createNewDraggableObject();
-    addDragListeners(dragObject);
-    dropContainer.addEventListener("dragover", dragOver);
-    dropContainer.addEventListener("drop", drop);
-  };
+// Eventos en el DOM
+// - Escuchar eventos
+let button = document.querySelector("button");
+button.addEventListener("click", function () {
+	alert("¡Botón presionado!");
 });
+
+// Evento con parámetros
+function showMessage(message) {
+	alert(message);
+}
+
+button.addEventListener("click", function () {
+	showMessage("¡Mensaje personalizado!");
+});
+
+// Crear una lista dinámica
+let input = document.getElementById("itemInput");
+let addButton = document.getElementById("addButton");
+let list = document.getElementById("dynamicList");
+
+addButton.addEventListener("click", function () {
+	if (input.value.trim() !== "") {
+		let newItem = document.createElement("li");
+		newItem.innerText = input.value;
+		list.appendChild(newItem);
+		input.value = ""; // Limpiar el input
+	}
+});
+
+// Filtrado de elementos del DOM
+const filterInput = document.getElementById("filterInput");
+const itemsList = document.getElementById("itemsList");
+
+filterInput.addEventListener("keyup", function () {
+	const term = filterInput.value.toLowerCase();
+	const items = itemsList.getElementsByTagName("li");
+
+	Array.from(items).forEach(function (item) {
+		if (item.textContent.toLowerCase().indexOf(term) !== -1) {
+			item.style.display = "block";
+		} else {
+			item.style.display = "none";
+		}
+	});
+});
+
+// Drag and Drop
+const draggable = document.getElementById('draggable');
+const dropzone = document.getElementById('dropzone');
+
+draggable.addEventListener('dragstart', function() {
+    setTimeout(() => { this.style.display = 'none'; }, 0);
+});
+
+dropzone.addEventListener('dragover', function(e) {
+    e.preventDefault();
+});
+
+dropzone.addEventListener('drop', function() {
+    draggable.style.display = 'block';
+    this.append(draggable);
+});
+
